@@ -32,4 +32,9 @@ export class WebsocketService {
     this.socket.emit(evento, payload, callback);
 
   }
+
+  listen(evento: string){
+    return  this.socket.fromEvent(evento);
+  }
+
 }
