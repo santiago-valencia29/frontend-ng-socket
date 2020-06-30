@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { WebsocketService } from '../../services/websocket.service';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  nombre = '';
+  constructor(public wsService: WebsocketService) { }
 
   ngOnInit(): void {
+  }
+
+  ingresar() {
+    this.wsService.loginWS(this.nombre);
   }
 
 }
