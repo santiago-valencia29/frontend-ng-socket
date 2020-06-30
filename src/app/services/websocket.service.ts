@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ɵConsole } from '@angular/core';
 import { Socket } from 'ngx-socket-io';
 
 @Injectable({
@@ -14,14 +14,22 @@ export class WebsocketService {
 
   checkStatus() {
     this.socket.on('connect', () => {
-      console.log('Conectado al servidor');
+      console.log('Cliente conectado');
       this.socketStatus = true;
     });
 
     this.socket.on('disconnect', () => {
-      console.log('Desconectado del servidor');
+      console.log('Cliente desconectado');
       this.socketStatus = false;
     });
+
+  }
+
+  // tslint:disable-next-line: ban-types
+  emit(evento: string, payload?: any, callback?: Function) {
+    // emit ('EVENTO', payload, callback?)
+    console.log('Emitiendo Mensaje');
+    this.socket.emit(evento, payload, callback);
 
   }
 }
