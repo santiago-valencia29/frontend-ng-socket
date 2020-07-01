@@ -19,6 +19,8 @@ export class WebsocketService {
     this.socket.on('connect', () => {
       console.log('Cliente conectado');
       this.socketStatus = true;
+      this.cargarStorage(); // para los id socket-nombreCliente
+
     });
 
     this.socket.on('disconnect', () => {
